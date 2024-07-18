@@ -206,6 +206,110 @@ MonoBehaviour:
   - trendPrefab: {fileID: 4429750598588555396, guid: 942fbe92fc3364e48842db72f2678edf, type: 3}
     size: 1
     tag: Cringe
+--- !u!1 &280631617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280631618}
+  - component: {fileID: 280631619}
+  - component: {fileID: 280631620}
+  m_Layer: 5
+  m_Name: TrendMeter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &280631618
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280631617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1404386365}
+  m_Father: {fileID: 1791212739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -518, y: -208}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &280631619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280631617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaaac4dfc77e563489abb037623b63dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cringeMeter: {fileID: 1404386366}
+  minValue: -100
+  maxValue: 100
+  meterGradient:
+    serializedVersion: 2
+    key0: {r: 0.26663578, g: 0.47738236, b: 0.82641506, a: 1}
+    key1: {r: 0.36470592, g: 0.7330827, b: 0.8509804, a: 1}
+    key2: {r: 0.5137255, g: 0.8862745, b: 0.58382183, a: 0}
+    key3: {r: 0.65846276, g: 0.8037735, b: 0.18046981, a: 0}
+    key4: {r: 0.8415094, g: 0.61401004, b: 0.16353858, a: 0}
+    key5: {r: 0.94716984, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 17348
+    ctime2: 30455
+    ctime3: 42636
+    ctime4: 53739
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+--- !u!114 &280631620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280631617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f628f914aa31dba499f6075b09a5823b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trendMeter: {fileID: 280631619}
+  comboThresholds:
+  - 0
+  - 10
+  - 25
+  - 50
+  - 100
+  - 200
+  comboDecayRate: 0.1
 --- !u!1 &536813581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6692700582703605556, guid: a20307f40e401af4eb399d3ebaf7c9c8, type: 3}
@@ -384,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentTrend: {fileID: 0}
   accseptedTrend: []
+  trendMeter: {fileID: 280631619}
 --- !u!61 &1335191220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -429,6 +534,81 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1404386364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404386365}
+  - component: {fileID: 1404386367}
+  - component: {fileID: 1404386366}
+  m_Layer: 5
+  m_Name: HypOmeter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1404386365
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404386364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 280631618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1404386366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404386364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d27ff040e42d60a4cae610f9e77942ec, type: 2}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 1
+  m_FillAmount: 0
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1404386367
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404386364}
+  m_CullTransparentMesh: 1
 --- !u!1 &1511404700
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +698,7 @@ GameObject:
   - component: {fileID: 1536743817}
   m_Layer: 0
   m_Name: LostTrendTrigger
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,6 +924,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1511404701}
+  - {fileID: 280631618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -852,6 +1033,7 @@ MonoBehaviour:
   CurrentTrend: {fileID: 0}
   accseptedTrend: []
   cringeTrends: []
+  trendMeter: {fileID: 280631619}
 --- !u!61 &1877849105
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ namespace Trends
         private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rb;
         private string _trendName;
+        public float trendPointsAmount { get; private set; }
 
         public TrendType trendType;
         
@@ -28,6 +29,7 @@ namespace Trends
             trendType = trendData.trendType;
             //isHype = trendData.isHype;
             _rb.mass = trendData.trendMass;
+            trendPointsAmount = trendData.trendPointsAmount;
         }
     }
 }

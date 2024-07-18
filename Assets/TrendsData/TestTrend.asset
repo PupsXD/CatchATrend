@@ -16,3 +16,5 @@ MonoBehaviour:
   isHype: 1
   trendMass: 1
   trendName: Sex
+  trendType: 0
+  trendPointsAmount: 50

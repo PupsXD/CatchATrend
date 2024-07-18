@@ -8,6 +8,7 @@ namespace BasketsForTrends
     public class CringeBasket : Basket
     {
         public List<Trend> cringeTrends;
+        [SerializeField] private TrendMeter trendMeter;
 
         private void Awake()
         {
@@ -18,6 +19,7 @@ namespace BasketsForTrends
             if (trend.trendType == TrendType.Cringe)
             {
                 cringeTrends.Add(trend);
+                trendMeter.AddCringe(trend.trendPointsAmount);
             }
         }
     }

@@ -7,6 +7,7 @@ namespace BasketsForTrends
 {
     public class HypeBasket : Basket
     {
+        [SerializeField] private TrendMeter trendMeter;
         private void Awake()
         {
             accseptedTrend = new List<Trend>();
@@ -16,6 +17,7 @@ namespace BasketsForTrends
             if (trend.trendType == TrendType.Hype)
             {
                 accseptedTrend.Add(trend);
+                trendMeter.AddHype(trend.trendPointsAmount);
             }
         }
     }

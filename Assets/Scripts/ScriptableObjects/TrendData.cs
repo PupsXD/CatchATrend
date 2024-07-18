@@ -11,5 +11,6 @@ namespace ScriptableObjects
         public int trendMass;
         public string trendName;
         public TrendType trendType;
+        public float trendPointsAmount;
     }
 }
