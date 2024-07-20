@@ -1,9 +1,10 @@
-﻿using DefaultNamespace;
+﻿using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Trend Data", menuName = "Create Trend", order = 0)]
+    [CreateAssetMenu(fileName = "Trend Data", menuName = "Create Trend/Trend Data", order = 0)]
     public class TrendData : ScriptableObject
     {
         public Sprite trendSprite;
@@ -12,5 +13,17 @@ namespace ScriptableObjects
         public string trendName;
         public TrendType trendType;
         public float trendPointsAmount;
+        public TrendVisualType trendVisualType;
+        public TrendAnimation trendAnimation;
+
+        public AnimationClip trendAnimationClip()
+        {
+            trendAnimation.GetAnimationForType(trendVisualType);
+
+            return trendAnimationClip();
+        }
+
+        
+ 
     }
 }

@@ -10,6 +10,9 @@ namespace Trends
         private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rb;
         private string _trendName;
+        private AnimationClip _trendCatchAnimation;
+        
+        //public TrendVisualType trendVisualType { get; private set; }
         public float trendPointsAmount { get; private set; }
 
         public TrendType trendType;
@@ -30,6 +33,8 @@ namespace Trends
             //isHype = trendData.isHype;
             _rb.mass = trendData.trendMass;
             trendPointsAmount = trendData.trendPointsAmount;
+            _trendCatchAnimation = trendData.trendAnimationClip();
+            //trendVisualType = trendData.trendVisualType;
         }
     }
 }

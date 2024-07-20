@@ -18,3 +18,4 @@ MonoBehaviour:
   trendName: Sex
   trendType: 0
   trendPointsAmount: 50
+  trendVisualType: 1
