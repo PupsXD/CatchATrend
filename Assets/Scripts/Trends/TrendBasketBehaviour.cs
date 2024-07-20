@@ -22,6 +22,7 @@ namespace Trends
         {
             _trendPool = pool;
             _tag = tag;
+            _rb.simulated = true;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +37,8 @@ namespace Trends
 
         private void ReturnToPool()
         {
+            _trend.CatchTrend();
+            _rb.simulated = false;
             _trendPool.ReturnToPool(_tag, gameObject);
         }
     }

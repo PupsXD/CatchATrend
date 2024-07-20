@@ -19,5 +19,7 @@ namespace ScriptableObjects
         {
             return trendVisuals.Find(pair => pair.visualType == type)?.animation;
         }
+        
+        
     }
 }
