@@ -19,6 +19,10 @@ namespace BasketsForTrends
             if (trend.trendType == TrendType.Cringe)
             {
                 cringeTrends.Add(trend);
+                trendMeter.AddHype(trend.trendPointsAmount);
+            }
+            else if (trend.trendType == TrendType.Hype)
+            {
                 trendMeter.AddCringe(trend.trendPointsAmount);
             }
         }

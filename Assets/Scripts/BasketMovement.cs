@@ -36,7 +36,7 @@ public class BasketMovement : MonoBehaviour
     
     private void Move()
     {
-        Vector2 mousePosition = GetMousePosition();
+        Vector2 mousePosition = GetInputPosition();
         Vector2 currentPosition = _rb.position;
         Vector2 direction = mousePosition - currentPosition;
 
@@ -55,10 +55,10 @@ public class BasketMovement : MonoBehaviour
 
     private void RotateBasket()
     {
-        Vector2 mousePosition = GetMousePosition();
+        Vector2 mousePosition = GetInputPosition();
         Vector2 basketToMouse = mousePosition - _rb.position;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Ended && Input.GetTouch(0).phase != TouchPhase.Canceled))
         {
             float angle = Vector2.SignedAngle(Vector2.up, basketToMouse);
             
@@ -76,10 +76,27 @@ public class BasketMovement : MonoBehaviour
         _rb.MoveRotation(newRotation);
     }
     
-    private Vector2 GetMousePosition()
+    private Vector2 GetInputPosition()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z -= mainCamera.transform.position.z;
-        return mainCamera.ScreenToWorldPoint(mousePosition);
+        Vector2 inputPosition;
+
+        if (Input.touchCount > 0)
+        {
+            // Используем сенсорный ввод на мобильных устройствах
+            inputPosition = Input.GetTouch(0).position;
+        }
+        else
+        {
+            // Используем позицию мыши на десктопных устройствах
+            inputPosition = Input.mousePosition;
+        }
+
+        // Убеждаемся, что координаты находятся в пределах экрана
+        inputPosition.x = Mathf.Clamp(inputPosition.x, 0, Screen.width);
+        inputPosition.y = Mathf.Clamp(inputPosition.y, 0, Screen.height);
+
+        // Преобразуем экранные координаты в мировые
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(inputPosition.x, inputPosition.y, -Camera.main.transform.position.z));
+        return new Vector2(worldPosition.x, worldPosition.y);
     }
 }

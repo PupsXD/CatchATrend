@@ -18,4 +18,5 @@ MonoBehaviour:
   trendName: Sex
   trendType: 0
   trendPointsAmount: 50
-  trendVisualType: 1
+  trendVisualType: 0
+  trendAnimation: {fileID: 11400000, guid: 60816db3a2bebe0429cdba701ea7c88e, type: 2}

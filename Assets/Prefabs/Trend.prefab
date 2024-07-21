@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trendData: {fileID: 0}
+  animationSpriteRenderer: {fileID: 1373283731988437200}
   finishAnimator: {fileID: 385867983230070264}
   trendType: 0
 --- !u!114 &6312755398638509786

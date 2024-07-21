@@ -8,13 +8,33 @@ namespace Singletones
     {
         public TrendFactory trendFactory;
         public List<Trend> activeTrends;
-        
+
+        [SerializeField] private float spawnInterval = 2f; // Интервал между спавнами
+        [SerializeField] private float spawnRadius = 5f; // Радиус области спавна
+        [SerializeField] private int maxActiveTrends = 10; // Максимальное количество активных трендов
+
+        private float nextSpawnTime;
+
         private void Awake()
         {
             trendFactory = GetComponent<TrendFactory>();
             activeTrends = new List<Trend>();
+            nextSpawnTime = Time.time + spawnInterval;
         }
-        
+
+        private void Update()
+        {
+            // Автоматический спавн
+            if (Time.time >= nextSpawnTime && activeTrends.Count < maxActiveTrends)
+            {
+                SpawnTrend(GetRandomSpawnPosition());
+                nextSpawnTime = Time.time + spawnInterval;
+            }
+
+            // Очистка неактивных трендов из списка
+            activeTrends.RemoveAll(trend => trend == null || !trend.gameObject.activeSelf);
+        }
+
         public void SpawnTrend(Vector3 position)
         {
             Trend trend = trendFactory.CreateRandomTrend(position);
@@ -23,16 +43,11 @@ namespace Singletones
                 activeTrends.Add(trend);
             }
         }
-        
-        private void Update()
+
+        private Vector3 GetRandomSpawnPosition()
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                SpawnTrend(transform.position);
-            }
+            Vector2 randomCircle = Random.insideUnitCircle * spawnRadius;
+            return transform.position + new Vector3(randomCircle.x, randomCircle.y, 0);
         }
-        
-        
-        
     }
 }

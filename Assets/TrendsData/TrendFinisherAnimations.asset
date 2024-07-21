@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1149f39371344ac7bcb9e93cbe353f07, type: 3}
   m_Name: TrendFinisherAnimations
   m_EditorClassIdentifier: 
-  trendVisuals: []
+  trendVisuals:
+  - visualType: 0
+    animation: {fileID: 7400000, guid: 530917f36ede91d4694ca556de25c104, type: 2}
+  - visualType: 1
+    animation: {fileID: 7400000, guid: 21490eaf297bf3543a835e73dcf670aa, type: 2}

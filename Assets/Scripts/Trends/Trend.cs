@@ -7,6 +7,7 @@ namespace Trends
     public class Trend : MonoBehaviour
     {
         [SerializeField] private TrendData trendData;
+        [SerializeField] private SpriteRenderer animationSpriteRenderer;
         public Animator finishAnimator;
         private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rb;
@@ -28,6 +29,7 @@ namespace Trends
 
         public void Initialize(TrendData trendData)
         {
+            animationSpriteRenderer.enabled = false;
             _spriteRenderer.enabled = true;
             _spriteRenderer.sprite = trendData.trendSprite;
             _trendName = trendData.trendName;
@@ -35,15 +37,24 @@ namespace Trends
             _rb.mass = trendData.trendMass;
             trendPointsAmount = trendData.trendPointsAmount;
             if (trendData.trendAnimation != null)
-                _trendCatchAnimation = trendData.trendAnimationClip();
+            {
+                _trendCatchAnimation = trendData.GetTrendAnimationClip();
+                Debug.Log($"Trend {gameObject.name} initialized with animation: {_trendCatchAnimation?.name ?? "null"}");
+            }
+
         }
         
         public void CatchTrend()
         {
             if (_trendCatchAnimation != null)
-                GetComponent<Animation>().Play(_trendCatchAnimation.name);
+            {
+                // Используем Animator вместо Animation
+                animationSpriteRenderer.enabled = true;
+                finishAnimator.Play(_trendCatchAnimation.name);
+            }
             else
             {
+                animationSpriteRenderer.enabled = true;
                 finishAnimator.SetBool("isDestroyed", true);
             }
         }

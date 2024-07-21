@@ -19,6 +19,10 @@ namespace BasketsForTrends
                 accseptedTrend.Add(trend);
                 trendMeter.AddHype(trend.trendPointsAmount);
             }
+            else if (trend.trendType == TrendType.Cringe)
+            {
+                trendMeter.AddCringe(trend.trendPointsAmount);
+            }
         }
     }
 }

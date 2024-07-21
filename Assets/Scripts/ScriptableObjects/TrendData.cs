@@ -16,11 +16,9 @@ namespace ScriptableObjects
         public TrendVisualType trendVisualType;
         public TrendAnimation trendAnimation;
 
-        public AnimationClip trendAnimationClip()
+        public AnimationClip GetTrendAnimationClip()
         {
-            trendAnimation.GetAnimationForType(trendVisualType);
-
-            return trendAnimationClip();
+            return trendAnimation?.GetAnimationForType(trendVisualType);
         }
 
         
